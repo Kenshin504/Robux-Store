@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KinStore</title>
+    <link rel="icon" type="image/png" href="images/icons8-robux-48.png">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="script/products.js" defer></script>
+    <script src="script/script.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand" data-section="gamepasses">🎮 KinStore</a>
+            <button class="hamburger">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="GamePasses" class="nav-link active" data-section="gamepasses">Gamepasses</a></li>
+                <li><a href="Robux" class="nav-link" data-section="robux">Robux Packages</a></li>
+                <li><a href="About" class="nav-link" data-section="about">About</a></li>
+            </ul>
+            <button class="theme-toggle">🌙</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Gamepasses Section -->
+        <section class="section" id="gamepasses">
+            <div class="section-header">
+                <h1 class="section-title">Gamepasses</h1>
+                <p class="section-subtitle">Unlock exclusive features and boost your gameplay experience</p>
+            </div>
+            
+            <!-- Game categories will be dynamically inserted here -->
+
+            <div class="game-category">
+                <h2 class="game-title">
+                    <img src="images/joystick.png" alt="More Games" class="game-title-logo">
+                    More Games
+                </h2>
+                <div class="coming-soon">
+                    <h3>More Games Coming Soon!</h3>
+                    <p>Stay tuned for exciting new game passes from other popular games</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Robux Packages Section -->
+        <section class="section hidden" id="robux">
+            <div class="section-header">
+                <h1 class="section-title">Robux Packages</h1>
+                <p class="section-subtitle">Get more Robux to enhance your Roblox experience</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Robux packages will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section hidden" id="about">
+            <div class="section-header">
+                <h1 class="section-title">About KinStore</h1>
+                <p class="section-subtitle">Your trusted source for Roblox gamepasses and Robux</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-card">
+                    <h2>Who We Are</h2>
+                    <p>KinStore offers affordable Robux and gamepasses. We provide competitive prices and reliable service to enhance your gaming experience.</p>
+                </div>
+
+                <div class="about-card">
+                    <h2>Payment Methods</h2>
+                    <ul>
+                        <li>GCash</li>
+                        <li>PayMaya</li>
+                        <li>GoTyme</li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <h2>Our Services</h2>
+                    <ul>
+                        <li>Blox Fruits Gamepasses</li>
+                        <li>Permanent Fruit Access</li>
+                        <li>Robux Packages</li>
+                        <li>Fast Delivery</li>
+                        <li>24/7 Support</li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <h2>Why Choose Us</h2>
+                    <ul>
+                        <li>Competitive Prices</li>
+                        <li>Secure Transactions</li>
+                        <li>Instant Delivery</li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <h2>Contact Us</h2>
+                    <p>For inquiries and support:</p>
+                    <ul>
+                        <li>Facebook: Ryan Lumbis</li>
+                        <li>Email: Riazure2025@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="purchaseModal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div class="modal-header">
+                <h2 class="modal-title">Want to Purchase?</h2>
+            </div>
+            <div class="product-details">
+                <span class="modal-product-icon"></span>
+                <h3 class="modal-product-name"></h3>
+                <div class="modal-product-price"></div>
+            </div>
+            <div class="contact-info">
+                <p>Direct Message me on Facebook</p>
+                <a href="https://www.facebook.com/ryan.lumbis.3" target="_blank" class="facebook-link">
+                    <span class="facebook-icon">👤</span>
+                    Ryan Lumbis
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 KinStore</p>
+    </footer>
+</body>
+</html>
