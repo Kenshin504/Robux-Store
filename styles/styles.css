@@ -319,6 +319,16 @@ body {
 .icon-30bondtable { background-image: url('../images/30bondtable.png'); }
 .icon-50bondtable { background-image: url('../images/50bondtable.png'); }
 
+/* Grow a Garden Icons */
+.icon-raccoon { background-image: url('../images/raccoon.webp'); }
+.icon-queen-bee { background-image: url('../images/queenbee.webp'); }
+.icon-red-fox { background-image: url('../images/redfox.webp'); }
+.icon-dragon-fly { background-image: url('../images/dragonfly.webp'); }
+.icon-butterfly { background-image: url('../images/butterfly.webp'); }
+.icon-disco-bee { background-image: url('../images/discobee.webp'); }
+.icon-mimic-octopus { background-image: url('../images/mimic.webp'); }
+.icon-chicken-zombie { background-image: url('../images/chickenzombie.webp'); }
+
 .product-name {
     font-size: 1rem;
     font-weight: 600;
@@ -1179,4 +1189,30 @@ body {
     .footer p {
         font-size: 0.85rem;
     }
+}
+
+/* Menu Overlay for mobile nav */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 99;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+.menu-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+body.menu-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    touch-action: none;
 }

@@ -15,14 +15,36 @@ function toggleTheme() {
 }
 
 // Hamburger menu functionality
+let scrollPosition = 0;
 function toggleMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const body = document.body;
+    const menuOverlay = document.querySelector('.menu-overlay');
     
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
     body.classList.toggle('menu-open');
+    if (menuOverlay) {
+        menuOverlay.classList.toggle('active');
+    }
+    if (body.classList.contains('menu-open')) {
+        // Lock scroll position
+        scrollPosition = window.scrollY || window.pageYOffset;
+        body.style.position = 'fixed';
+        body.style.top = `-${scrollPosition}px`;
+        body.style.left = '0';
+        body.style.right = '0';
+        body.style.width = '100vw';
+    } else {
+        // Restore scroll position
+        body.style.position = '';
+        body.style.top = '';
+        body.style.left = '';
+        body.style.right = '';
+        body.style.width = '';
+        window.scrollTo(0, scrollPosition);
+    }
 }
 
 // Scroll Animation
@@ -99,6 +121,15 @@ document.addEventListener('DOMContentLoaded', function() {
         navMenu.classList.remove('active');
         hamburger.classList.remove('active');
         document.body.classList.remove('menu-open');
+        // Restore scroll position and unlock body if on mobile
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollPosition);
+        const menuOverlay = document.querySelector('.menu-overlay');
+        if (menuOverlay) menuOverlay.classList.remove('active');
     }
 
     navLinks.forEach(link => {
@@ -326,4 +357,24 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.section, .product-card').forEach(element => {
         observer.observe(element);
     });
+
+    const menuOverlay = document.querySelector('.menu-overlay');
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', function() {
+            // Close menu if overlay is clicked
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            menuOverlay.classList.remove('active');
+            // Restore scroll position
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
+            document.body.style.width = '';
+            window.scrollTo(0, scrollPosition);
+        });
+    }
 });

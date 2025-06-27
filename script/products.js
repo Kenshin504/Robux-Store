@@ -9,42 +9,42 @@ const STORE_DATA = {
                     name: 'Buddha',
                     icon: 'buddha',
                     price: 1650,
-                    pesoPrice: 445.00,
+                    pesoPrice: 460.00,
                     featured: true
                 },
                 {
                     name: 'Dragon',
                     icon: 'dragon',
                     price: 5000,
-                    pesoPrice: 1350.00,
+                    pesoPrice: 1375.00,
                     featured: true
                 },
                 {
                     name: 'Kitsune',
                     icon: 'kitsune',
                     price: 4000,
-                    pesoPrice: 1080.00,
+                    pesoPrice: 1100.00,
                     featured: true
                 },
                 {
                     name: 'Dough',
                     icon: 'dough',
                     price: 2400,
-                    pesoPrice: 648.00,
+                    pesoPrice: 665.00,
                     featured: true
                 },
                 {
                     name: 'Gas',
                     icon: 'gas',
                     price: 2500,
-                    pesoPrice: 675.00,
+                    pesoPrice: 695.00,
                     bestValue: true
                 },
                 {
                     name: 'T-Rex',
                     icon: 'trex',
                     price: 2350,
-                    pesoPrice: 635.00,
+                    pesoPrice: 650.00,
                     bestValue: true
                 },
                 {
@@ -189,7 +189,7 @@ const STORE_DATA = {
                     name: 'Portal',
                     icon: 'portal',
                     price: 2000,
-                    pesoPrice: 540.00
+                    pesoPrice: 550.00
                 },
                 {
                     name: 'Rumble',
@@ -329,34 +329,60 @@ const STORE_DATA = {
             ]
         },
         {
-            id: 'deadrails-currency',
-            name: 'Deadrails - Currency',
-            logo: 'deadrails.webp',
+            id: 'grow-a-garden',
+            name: 'Grow a Garden - Pets',
+            logo: 'growagarden.webp',
             products: [
                 {
-                    name: '50 Bonds',
-                    icon: '50bondtable',
-                    price: 50,
-                    pesoPrice: 20.00,
-                    bestValue: true
+                    name: 'Mimic Octopus',
+                    icon: 'mimic-octopus',
+                    price: 0,
+                    pesoPrice: 300.00,
+                    featured: true
                 },
                 {
-                    name: '20 Bonds',
-                    icon: '30bondtable',
-                    price: 20,
-                    pesoPrice: 15.00
+                    name: 'Raccoon',
+                    icon: 'raccoon',
+                    price: 0,
+                    pesoPrice: 250.00,
+                    featured: true
                 },
                 {
-                    name: '10 Bonds',
-                    icon: '10bondtable',
-                    price: 10,
-                    pesoPrice: 10.00
+                    name: 'Dragon Fly',
+                    icon: 'dragon-fly',
+                    price: 0,
+                    pesoPrice: 220.00,
+                    featured: true
                 },
                 {
-                    name: '5 Bonds',
-                    icon: '5bondtable',
-                    price: 5,
-                    pesoPrice: 5.00
+                    name: 'Butterfly',
+                    icon: 'butterfly',
+                    price: 0,
+                    pesoPrice: 240.00,
+                },
+                {
+                    name: 'Disco Bee',
+                    icon: 'disco-bee',
+                    price: 0,
+                    pesoPrice: 240.00,
+                },
+                {
+                    name: 'Queen Bee',
+                    icon: 'queen-bee',
+                    price: 0,
+                    pesoPrice: 110.00,
+                },
+                {
+                    name: 'Red Fox',
+                    icon: 'red-fox',
+                    price: 0,
+                    pesoPrice: 50.00,
+                },
+                {
+                    name: 'Chicken Zombie',
+                    icon: 'chicken-zombie',
+                    price: 0,
+                    pesoPrice: 50.00,
                 }
             ]
         }
