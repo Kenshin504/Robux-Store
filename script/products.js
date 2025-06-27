@@ -312,19 +312,19 @@ const STORE_DATA = {
                     name: 'Sawed-Off Shotgun',
                     icon: 'sawed-off',
                     price: 250,
-                    pesoPrice: 68.00
+                    pesoPrice: 80.00
                 },
                 {
                     name: 'Mauser C96',
                     icon: 'mauser',
                     price: 300,
-                    pesoPrice: 81.00
+                    pesoPrice: 100.00
                 },
                 {
                     name: '+5 Storage',
                     icon: 'storage',
                     price: 150,
-                    pesoPrice: 41.00
+                    pesoPrice: 55.00
                 }
             ]
         },

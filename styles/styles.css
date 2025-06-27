@@ -36,6 +36,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -55,6 +56,9 @@ body {
     top: 0;
     z-index: 100;
     padding: 1rem 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .nav-container {
@@ -630,6 +634,27 @@ body {
     .nav-menu.active .nav-link {
         opacity: 1;
         transform: translateX(0);
+    }
+
+    /* Ensure navbar stays sticky on mobile */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    /* Add padding to body to account for fixed navbar */
+    body {
+        padding-top: 80px; /* Adjust based on your navbar height */
+    }
+    
+    /* Ensure navbar stays on top of everything */
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 }
 
@@ -1215,4 +1240,149 @@ body.menu-open {
     width: 100vw;
     height: 100vh;
     touch-action: none;
+}
+
+/* Category Navigation */
+.category-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+.category-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--accent-color);
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.category-card:hover::before {
+    opacity: 1;
+}
+
+.category-icon {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.category-card:hover .category-icon {
+    transform: scale(1.1);
+}
+
+.category-card h3 {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.category-card p {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Highlight animation for sections */
+@keyframes highlightSection {
+    0% {
+        background: rgba(102, 126, 234, 0.1);
+        transform: scale(1);
+    }
+    50% {
+        background: rgba(102, 126, 234, 0.2);
+        transform: scale(1.02);
+    }
+    100% {
+        background: transparent;
+        transform: scale(1);
+    }
+}
+
+/* Mobile responsive for category nav */
+@media (max-width: 768px) {
+    .category-nav {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .category-card {
+        padding: 0.75rem 0.4rem;
+    }
+    
+    .category-icon {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 0.4rem;
+    }
+    
+    .category-card h3 {
+        font-size: 0.8rem;
+        margin-bottom: 0.15rem;
+    }
+    
+    .category-card p {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-nav {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.4rem;
+    }
+    
+    .category-card {
+        padding: 0.6rem 0.3rem;
+    }
+    
+    .category-icon {
+        width: 25px;
+        height: 25px;
+        margin-bottom: 0.3rem;
+    }
+    
+    .category-card h3 {
+        font-size: 0.75rem;
+    }
+    
+    .category-card p {
+        font-size: 0.6rem;
+    }
 }

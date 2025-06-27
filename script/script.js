@@ -16,7 +16,13 @@ function toggleTheme() {
 
 // Hamburger menu functionality
 let scrollPosition = 0;
-function toggleMenu() {
+function toggleMenu(event) {
+    // Prevent default behavior to avoid any unwanted scrolling
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const body = document.body;
@@ -43,7 +49,30 @@ function toggleMenu() {
         body.style.left = '';
         body.style.right = '';
         body.style.width = '';
-        window.scrollTo(0, scrollPosition);
+        
+        // Use requestAnimationFrame for smoother scroll restoration
+        requestAnimationFrame(() => {
+            window.scrollTo(0, scrollPosition);
+        });
+        
+        // Ensure navbar stays fixed on mobile, sticky on desktop
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                navbar.style.position = 'fixed';
+                navbar.style.top = '0';
+                navbar.style.left = '0';
+                navbar.style.right = '0';
+                navbar.style.zIndex = '1000';
+            } else {
+                navbar.style.position = 'sticky';
+                navbar.style.top = '0';
+                navbar.style.left = '';
+                navbar.style.right = '';
+                navbar.style.zIndex = '100';
+            }
+        }
     }
 }
 
@@ -95,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add click event listener for hamburger menu
     const hamburger = document.querySelector('.hamburger');
-    hamburger.addEventListener('click', toggleMenu);
+    hamburger.addEventListener('click', (event) => toggleMenu(event));
 
     // Navigation functionality
     const sections = document.querySelectorAll('.section');
@@ -121,15 +150,38 @@ document.addEventListener('DOMContentLoaded', function() {
         navMenu.classList.remove('active');
         hamburger.classList.remove('active');
         document.body.classList.remove('menu-open');
+        
         // Restore scroll position and unlock body if on mobile
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.left = '';
         document.body.style.right = '';
         document.body.style.width = '';
-        window.scrollTo(0, scrollPosition);
+        
+        // Scroll to top of the new section instead of restoring previous position
+        window.scrollTo(0, 0);
+        
         const menuOverlay = document.querySelector('.menu-overlay');
         if (menuOverlay) menuOverlay.classList.remove('active');
+        
+        // Ensure navbar stays fixed on mobile, sticky on desktop
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                navbar.style.position = 'fixed';
+                navbar.style.top = '0';
+                navbar.style.left = '0';
+                navbar.style.right = '0';
+                navbar.style.zIndex = '1000';
+            } else {
+                navbar.style.position = 'sticky';
+                navbar.style.top = '0';
+                navbar.style.left = '';
+                navbar.style.right = '';
+                navbar.style.zIndex = '100';
+            }
+        }
     }
 
     navLinks.forEach(link => {
@@ -196,6 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function generateGameSection(gameData) {
         const section = document.createElement('div');
         section.className = 'game-category';
+        section.id = gameData.id; // Add ID for targeting
         
         section.innerHTML = `
             <h2 class="game-title">
@@ -375,6 +428,79 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.right = '';
             document.body.style.width = '';
             window.scrollTo(0, scrollPosition);
+            
+            // Ensure navbar stays fixed on mobile, sticky on desktop
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                const isMobile = window.innerWidth <= 768;
+                if (isMobile) {
+                    navbar.style.position = 'fixed';
+                    navbar.style.top = '0';
+                    navbar.style.left = '0';
+                    navbar.style.right = '0';
+                    navbar.style.zIndex = '1000';
+                } else {
+                    navbar.style.position = 'sticky';
+                    navbar.style.top = '0';
+                    navbar.style.left = '';
+                    navbar.style.right = '';
+                    navbar.style.zIndex = '100';
+                }
+            }
         });
     }
+
+    // Add category navigation functionality
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const categoryId = this.getAttribute('data-category');
+            const targetSection = document.getElementById(categoryId);
+            
+            if (targetSection) {
+                // Get navbar height for offset (account for fixed navbar on mobile)
+                const navbar = document.querySelector('.navbar');
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                const isMobile = window.innerWidth <= 768;
+                const offset = isMobile ? navbarHeight + 20 : navbarHeight + 20; // Extra offset for mobile
+                
+                // Get the exact position of the target section
+                const targetPosition = targetSection.offsetTop - offset;
+                
+                // Smooth scroll to the exact location
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Add smooth scrolling for main navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = link.getAttribute('data-section');
+            const targetSection = document.getElementById(sectionId);
+            
+            if (targetSection) {
+                // Get navbar height for offset (account for fixed navbar on mobile)
+                const navbar = document.querySelector('.navbar');
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                const isMobile = window.innerWidth <= 768;
+                const offset = isMobile ? navbarHeight + 20 : navbarHeight + 20; // Extra offset for mobile
+                
+                // Get the exact position of the target section
+                const targetPosition = targetSection.offsetTop - offset;
+                
+                // Smooth scroll to the exact location
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update active section and close mobile menu
+                setActiveSection(sectionId);
+            }
+        });
+    });
 });
